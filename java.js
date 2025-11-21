@@ -3,52 +3,22 @@
 // ======================================================================
 
 const demoData = {
-  1: [
-    { name: "", score: 2450, matches: 120, tier: 1 },
-    { name: "", score: 2390, matches: 210, tier: 1 },
-    { name: "", score: 2310, matches: 165, tier: 1 },
-    { name: "", score: 2255, matches: 155, tier: 1 },
-    { name: "", score: 2200, matches: 140, tier: 1 },
-    { name: "", score: 2100, matches: 130, tier: 1 },
-    { name: "", score: 2080, matches: 98, tier: 1 },
-    { name: "", score: 2010, matches: 87, tier: 1 },
-    { name: "", score: 1980, matches: 75, tier: 1 },
-    { name: "", score: 1920, matches: 60, tier: 1 },
-  ],
+  1: [{ name: "", score: 60, matches: 3, tier: 1 }],
 
-  2: [
-    { name: "", score: 1850, matches: 112, tier: 2 },
-    { name: "", score: 1770, matches: 90, tier: 2 },
-    { name: "", score: 1690, matches: 80, tier: 2 },
-    { name: "", score: 1650, matches: 55, tier: 2 },
-    { name: "", score: 1620, matches: 70, tier: 2 },
-    { name: "", score: 1600, matches: 65, tier: 2 },
-    { name: "", score: 1590, matches: 44, tier: 2 },
-    { name: "", score: 1555, matches: 40, tier: 2 },
-    { name: "", score: 1500, matches: 37, tier: 2 },
-    { name: "", score: 1470, matches: 30, tier: 2 },
-  ],
+  2: [{ name: "", score: 40, matches: 3, tier: 2 }],
 
-  3: [
-    { name: "", score: 1600, matches: 88, tier: 3 },
-    { name: "", score: 1540, matches: 70, tier: 3 },
-    { name: "", score: 1500, matches: 62, tier: 3 },
-    { name: "", score: 1470, matches: 59, tier: 3 },
-    { name: "", score: 1420, matches: 40, tier: 3 },
-    { name: "", score: 1350, matches: 35, tier: 3 },
-  ],
+  3: [{ name: "", score: 10, matches: 3, tier: 3 }],
 
   4: [
-    { name: "Marlow_Geo", score: 1400, matches: 67, tier: 4 },
-    { name: "", score: 1350, matches: 59, tier: 4 },
-    { name: "", score: 1300, matches: 40, tier: 4 },
+    { name: "Marlow_Geo", score: 4, matches: 3, tier: 4 },
+    { name: "Red_Blu", score: 3, matches: 3, tier: 4 },
   ],
 
   5: [
-    { name: "_ItzRealUcha", score: 1250, matches: 55, tier: 5 },
-    { name: "WhiteBlack", score: 1200, matches: 48, tier: 5 },
-    { name: "Datasha", score: 1200, matches: 48, tier: 5 },
-    { name: "DreamStanXO", score: 1200, matches: 48, tier: 5 },
+    { name: "_ItzRealUcha", score: 2, matches: 3, tier: 5 },
+    { name: "WhiteBlack", score: 2, matches: 3, tier: 5 },
+    { name: "Datasha", score: 1, matches: 3, tier: 5 },
+    { name: "DreamStanXO", score: 1, matches: 3, tier: 5 },
   ],
 };
 
