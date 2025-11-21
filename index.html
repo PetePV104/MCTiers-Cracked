@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ka">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MC Tiers — Demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <h1>MC Tiers — Demo</h1>
+        <p class="subtitle">Top 10 Players — Each Tier</p>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="#tiers" class="nav-link">Tiers</a>
+        <a href="#leaderboards" class="nav-link">Leaderboards</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section id="intro" class="card">
+        <h2>CPVP Test</h2>
+        <p>This is Demo version.</p>
+      </section>
+
+      <section id="tiers" class="card grid">
+        <h2>Tiers</h2>
+
+        <div class="tiers-wrap">
+          <!-- We'll inject SVGs for each tier from JS -->
+        </div>
+      </section>
+
+      <section id="controls" class="card">
+        <h2>Filtering</h2>
+        <div class="controls-row">
+          <label>
+            Select Tier:
+            <select id="tierSelect">
+              <option value="all">All Tiers</option>
+              <option value="1">Tier 1</option>
+              <option value="2">Tier 2</option>
+              <option value="3">Tier 3</option>
+              <option value="4">Tier 4</option>
+              <option value="5">Tier 5</option>
+            </select>
+          </label>
+
+          <label>
+            Model:
+            <select id="modeSelect">
+              <option value="cpvp">CPvP (Test)</option>
+              <!-- We intentionally do NOT show other modes per your request -->
+            </select>
+          </label>
+
+          <button id="refreshBtn">Refresh</button>
+        </div>
+      </section>
+
+      <section id="leaderboards" class="card">
+        <h2>Top 10 Player In Cracked Cpvp</h2>
+        <div id="leaderboardContainer">
+          <!-- Leaderboards injected by JS -->
+        </div>
+      </section>
+
+      <footer class="card footer">
+        <small>Demo Website.</small>
+      </footer>
+    </main>
+
+    <script src="java.js"></script>
+  </body>
+</html>
