@@ -1,6 +1,7 @@
 // ======================================================================
 // REAL DATA — Replace with your own players
 // ======================================================================
+// Demo data structure:
 
 const demoData = {
   1: [{ name: "", score: 60, matches: 3, tier: 1 }],
