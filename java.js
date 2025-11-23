@@ -18,7 +18,7 @@ const demoData = {
   5: [
     { name: "_ItzRealUcha", score: 2, matches: 3, tier: 5 },
     { name: "WhiteBlack", score: 2, matches: 3, tier: 5 },
-     { name: "zangi777", score: 2, matches: 3, tier: 5 },
+    { name: "zangi777", score: 2, matches: 3, tier: 5 },
     { name: "Datasha", score: 1, matches: 3, tier: 5 },
     { name: "DreamStanXO", score: 1, matches: 3, tier: 5 },
   ],
