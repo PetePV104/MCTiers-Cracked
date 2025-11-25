@@ -1,208 +1,113 @@
-// ======================================================================
-// REAL DATA — Replace with your own players
-// ======================================================================
-// Demo data structure:
+// Demo Player Data (სრტიქტულად ის მოთამაშეები, რაც შენ მისაწოდებლად გქონდა)
+const players = [
+  { name: "Marlow_Geo", tier: "HT4", points: 4 },
+  { name: "Red_Blu", tier: "LT4", points: 3 },
+  { name: "ItzRealUcha_", tier: "HT5", points: 2 },
+  { name: "WhiteBlack", tier: "HT5", points: 2 },
+  { name: "zangi777", tier: "HT5", points: 2 },
+  { name: "DreamStanXO", tier: "LT5", points: 1 },
+  { name: "Datasha", tier: "LT5", points: 1 },
+];
 
-const demoData = {
-  1: [{ name: "", score: 60, matches: 3, tier: 1 }],
-
-  2: [{ name: "", score: 40, matches: 3, tier: 2 }],
-
-  3: [{ name: "", score: 10, matches: 3, tier: 3 }],
-
-  4: [
-    { name: "Marlow_Geo", score: 4, matches: 3, tier: 4 },
-    { name: "Red_Blu", score: 3, matches: 3, tier: 4 },
-  ],
-
-  5: [
-    { name: "_ItzRealUcha", score: 2, matches: 3, tier: 5 },
-    { name: "WhiteBlack", score: 2, matches: 3, tier: 5 },
-    { name: "zangi777", score: 2, matches: 3, tier: 5 },
-    { name: "Datasha", score: 1, matches: 3, tier: 5 },
-    { name: "DreamStanXO", score: 1, matches: 3, tier: 5 },
-  ],
-};
-
-// Sort all data (descending scores)
-Object.keys(demoData).forEach((t) => {
-  demoData[t].sort((a, b) => b.score - a.score);
-});
-
-// ======================================================================
-// SVGs (unchanged except your design)
-// ======================================================================
-function tierSVG(tier) {
-  switch (tier) {
-    case 5:
-      return `
-        <svg width="120" height="150" viewBox="0 0 120 150">
-          <circle cx="60" cy="40" r="35" stroke="#A99CF5" stroke-width="6" fill="none"/>
-          <polygon points="60,10 85,25 85,55 60,70 35,55 35,25"
-            fill="#C28AE8" stroke="white" stroke-width="4"/>
-          <rect x="20" y="90" width="80" height="45" rx="12" fill="#4A4664"/>
-          <text x="60" y="118" font-size="30" fill="#B9A9D8" text-anchor="middle" font-weight="700">
-            Tier 5
-          </text>
-        </svg>
-      `;
-    case 4:
-      return `
-        <svg width="120" height="150" viewBox="0 0 120 150">
-          <circle cx="60" cy="40" r="35" stroke="#6E65FF" stroke-width="6" fill="none"/>
-          <polygon points="60,10 85,25 85,55 60,70 35,55 35,25"
-            fill="#B98CFF" stroke="white" stroke-width="4"/>
-          <rect x="20" y="90" width="80" height="45" rx="12" fill="#2B2D33"/>
-          <text x="60" y="118" font-size="30" fill="#C8B9FF" text-anchor="middle" font-weight="700">
-            Tier 4
-          </text>
-        </svg>
-      `;
-    case 3:
-      return `
-        <svg width="120" height="150" viewBox="0 0 120 150">
-          <circle cx="60" cy="40" r="35" stroke="#8A6037" stroke-width="6" fill="none"/>
-          <polygon points="60,10 85,25 85,55 60,70 35,55 35,25"
-            fill="#C38AE7" stroke="white" stroke-width="4"/>
-          <rect x="20" y="90" width="80" height="45" rx="12" fill="#7A5530"/>
-          <text x="60" y="118" font-size="30" fill="#FFA865" text-anchor="middle" font-weight="700">
-            Tier 3
-          </text>
-        </svg>
-      `;
-    case 2:
-      return `
-        <svg width="120" height="150" viewBox="0 0 120 150">
-          <circle cx="60" cy="40" r="35" stroke="#8E97A4" stroke-width="6" fill="none"/>
-          <polygon points="60,10 85,25 85,55 60,70 35,55 35,25"
-            fill="#C38AE7" stroke="white" stroke-width="4"/>
-          <rect x="20" y="90" width="80" height="45" rx="12" fill="#5E6878"/>
-          <text x="60" y="118" font-size="30" fill="#C7D4FF" text-anchor="middle" font-weight="700">
-            Tier 2
-          </text>
-        </svg>
-      `;
-    default:
-      return `
-        <svg width="120" height="150" viewBox="0 0 120 150">
-          <circle cx="60" cy="40" r="35" stroke="#9E7F2A" stroke-width="6" fill="none"/>
-          <polygon points="60,10 85,25 85,55 60,70 35,55 35,25"
-            fill="#C28AE8" stroke="white" stroke-width="4"/>
-          <rect x="20" y="90" width="80" height="45" rx="12" fill="#7A6420"/>
-          <text x="60" y="118" font-size="30" fill="#EDC85C" text-anchor="middle" font-weight="700">
-            Tier 1
-          </text>
-        </svg>
-      `;
-  }
+// Load Minecraft Skin from Crafty.gg
+function getSkinURL(username, size = 150) {
+  // crafty.gg 3d bust renderer (as you used before)
+  return `https://render.crafty.gg/3d/bust/${encodeURIComponent(
+    username
+  )}?size=${size}`;
 }
 
-function pickFillForTier(t) {
-  const fills = {
-    1: "#C28AE8",
-    2: "#8AC8E8",
-    3: "#E8B38A",
-    4: "#8AE8A6",
-    5: "#E88AB4",
-  };
-  return fills[t] || "#C28AE8";
-}
+// Render leaderboard (sorted by points desc)
+const lbList = document.getElementById("lbList");
 
-// ======================================================================
-// Inject tier icons
-// ======================================================================
-const tiersWrap = document.querySelector(".tiers-wrap");
-for (let t = 1; t <= 5; t++) {
-  const div = document.createElement("div");
-  div.className = "tier-badge";
-  div.innerHTML =
-    tierSVG(t) +
-    `<div class="tier-title">Tier ${t}</div>
-     <div class="tier-sub">Top 10 — CPvP</div>`;
-
-  div.addEventListener("click", () => {
-    document.getElementById("tierSelect").value = String(t);
-    renderLeaderboards(t);
-    document
-      .getElementById("leaderboardContainer")
-      .scrollIntoView({ behavior: "smooth" });
-  });
-
-  tiersWrap.appendChild(div);
-}
-
-// ======================================================================
-// Dropdown handler
-// ======================================================================
-document.getElementById("tierSelect").addEventListener("change", (e) => {
-  const val = e.target.value;
-  renderLeaderboards(val === "all" ? null : Number(val));
-});
-
-// initial load
-renderLeaderboards(null);
-
-// ======================================================================
-// Leaderboard renderer
-// ======================================================================
-function renderLeaderboards(tierFilter) {
-  const container = document.getElementById("leaderboardContainer");
-  container.innerHTML = "";
-
-  const tiers = tierFilter ? [tierFilter] : [1, 2, 3, 4, 5];
-
-  tiers.forEach((t) => {
-    const card = document.createElement("div");
-    card.className = "lb-card";
-
-    card.innerHTML = `
-      <div class="lb-header">
+function renderLeaderboard() {
+  // copy + sort (desc)
+  const sorted = [...players].sort((a, b) => b.points - a.points);
+  lbList.innerHTML = sorted
+    .map((p, i) => {
+      // create a simple tier circle label
+      return `
+      <div class="lb-row" data-player="${p.name}">
         <div style="display:flex;align-items:center;gap:12px;">
-          ${miniTierSVG(t)}
-          <div>
-            <div style="font-weight:700">Tier ${t} — CPvP</div>
-            <div style="font-size:12px;color:var(--muted)">Top 10 Players</div>
+          <div class="rank-badge">${i + 1}.</div>
+        </div>
+
+        <div class="player">
+          <img class="lb-skin" src="${getSkinURL(p.name, 160)}" alt="${
+        p.name
+      } skin" />
+          <div class="player-meta">
+            <div class="player-name">${p.name}</div>
+            <div class="player-sub">Points: <strong>${
+              p.points
+            } pts</strong></div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;">
+          <div class="tier-badge" title="Tier: ${p.tier}">
+            <span class="tier-circle">${p.tier.replace(
+              /[^A-Za-z0-9]/g,
+              ""
+            )}</span>
+            <span style="opacity:0.9; margin-left:6px;">${p.tier}</span>
           </div>
         </div>
       </div>
     `;
+    })
+    .join("");
+}
 
-    const list = document.createElement("div");
-    list.className = "lb-list";
+renderLeaderboard();
 
-    list.innerHTML = `
-      <div style="font-weight:700">Player</div>
-      <div style="font-weight:700">Score</div>
-      <div style="font-weight:700">Matches</div>
-    `;
+// Search System (only searches among players array)
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
 
-    (demoData[t] || []).slice(0, 10).forEach((p, idx) => {
-      list.innerHTML += `
-        <div class="player">
-          <div class="rank-badge">${idx + 1}</div>
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+
+  const query = searchInput.value.trim().toLowerCase();
+  if (!query) {
+    searchResults.innerHTML =
+      "<p style='color:var(--muted)'>Please type a player name...</p>";
+    return;
+  }
+
+  const result = players.find((p) => p.name.toLowerCase() === query);
+  if (!result) {
+    searchResults.innerHTML = `<div class="player-card"><p style="color:var(--muted)">No player found...</p></div>`;
+    return;
+  }
+
+  // build SVG trophy icon + tier below as requested
+  const svgTrophy = `
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="3" width="18" height="6" rx="1.5" fill="#2b2f36"/>
+      <path d="M7 9c0 .88.39 1.67 1 2.22V13h8v-1.78c.61-.55 1-1.34 1-2.22V6H7v3z" fill="#f5d06a"/>
+      <path d="M9 14h6v2H9z" fill="#d9b34b"/>
+      <path d="M10 16h4v2h-4z" fill="#caa741"/>
+    </svg>
+  `;
+
+  searchResults.innerHTML = `
+    <div class="player-card">
+      <img src="${getSkinURL(result.name, 200)}" class="skin-img" alt="${
+    result.name
+  } skin" />
+      <div style="display:flex;flex-direction:column;">
+        <h2 style="margin:0 0 6px 0;">${result.name}</h2>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="tier-icon">${svgTrophy}</div>
           <div>
-            <div style="font-weight:600">${p.name}</div>
-            <div style="font-size:12px;color:var(--muted)">tier ${p.tier}</div>
+            <p class="tier-text">Tier: <strong>${result.tier}</strong></p>
+            <p style="margin:6px 0 0 0; color:var(--muted)">Points: ${
+              result.points
+            }</p>
           </div>
         </div>
-        <div>${p.score}</div>
-        <div>${p.matches}</div>
-      `;
-    });
-
-    card.appendChild(list);
-    container.appendChild(card);
-  });
-}
-
-// mini SVG
-function miniTierSVG(t) {
-  return `
-  <svg width="56" height="70" viewBox="0 0 120 150">
-    <circle cx="60" cy="40" r="35" stroke="#9E7F2A" stroke-width="4" fill="none"/>
-    <polygon points="60,10 85,25 85,55 60,70 35,55 35,25"
-      fill="${pickFillForTier(t)}" stroke="white" stroke-width="3"/>
-    <rect x="40" y="90" width="40" height="30" rx="8" fill="#7A6420"/>
-    <text x="60" y="112" font-size="18" fill="#EDC85C" text-anchor="middle" font-weight="700">T${t}</text>
-  </svg>`;
-}
+      </div>
+    </div>
+  `;
+});
