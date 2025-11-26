@@ -2,7 +2,7 @@
 const players = [
   { name: "Marlow_Geo", tier: "HT4", points: 4 },
   { name: "Red_Blu", tier: "LT4", points: 3 },
-  { name: "ItzRealUcha_", tier: "HT5", points: 2 },
+  { name: "_ItzRealUcha", tier: "HT5", points: 2 },
   { name: "WhiteBlack", tier: "HT5", points: 2 },
   { name: "zangi777", tier: "HT5", points: 2 },
   { name: "DreamStanXO", tier: "LT5", points: 1 },
