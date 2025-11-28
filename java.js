@@ -1,5 +1,6 @@
 // Demo Player Data (სრტიქტულად ის მოთამაშეები, რაც შენ მისაწოდებლად გქონდა)
 const players = [
+  { name: "_BMW", tier: "LT3", points: 6 },
   { name: "Marlow_Geo", tier: "HT4", points: 4 },
   { name: "Red_Blu", tier: "LT4", points: 3 },
   { name: "_ItzRealUcha", tier: "HT5", points: 2 },
