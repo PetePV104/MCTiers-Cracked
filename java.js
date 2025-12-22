@@ -5,6 +5,7 @@ const players = [
   { name: "Marlow_Geo", tier: "LT3", points: 6 },
   { name: "Pretty", tier: "LT3", points: 6 },
   { name: "Qartveli", tier: "HT4", points: 4 },
+  { name: " DroppedByGogeta", tier: "LT4", points: 3 },
   { name: "Red_Blu", tier: "LT4", points: 3 },
   { name: "_ItzRealUcha", tier: "HT5", points: 2 },
   { name: "WhiteBlack", tier: "HT5", points: 2 },
