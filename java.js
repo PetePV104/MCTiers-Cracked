@@ -10,6 +10,7 @@ const players = [
   { name: "Red_Blu", tier: "LT4", points: 3 },
   { name: "_ItzRealUcha", tier: "HT5", points: 2 },
   { name: "NightzX12", tier: "HT5", points: 2 },
+  { name: "0bqs", tier: "LT4", points: 3 },
   { name: "WhiteBlack", tier: "HT5", points: 2 },
   { name: "zangi777", tier: "HT5", points: 2 },
   { name: "DreamStanXO", tier: "LT5", points: 1 },
@@ -20,7 +21,7 @@ const players = [
 function getSkinURL(username, size = 150) {
   // crafty.gg 3d bust renderer (as you used before)
   return `https://render.crafty.gg/3d/bust/${encodeURIComponent(
-    username
+    username,
   )}?size=${size}`;
 }
 
@@ -41,8 +42,8 @@ function renderLeaderboard() {
 
         <div class="player">
           <img class="lb-skin" src="${getSkinURL(p.name, 160)}" alt="${
-        p.name
-      } skin" />
+            p.name
+          } skin" />
           <div class="player-meta">
             <div class="player-name">${p.name}</div>
             <div class="player-sub">Points: <strong>${
@@ -55,7 +56,7 @@ function renderLeaderboard() {
           <div class="tier-badge" title="Tier: ${p.tier}">
             <span class="tier-circle">${p.tier.replace(
               /[^A-Za-z0-9]/g,
-              ""
+              "",
             )}</span>
             <span style="opacity:0.9; margin-left:6px;">${p.tier}</span>
           </div>
@@ -101,8 +102,8 @@ searchInput.addEventListener("keydown", (e) => {
   searchResults.innerHTML = `
     <div class="player-card">
       <img src="${getSkinURL(result.name, 200)}" class="skin-img" alt="${
-    result.name
-  } skin" />
+        result.name
+      } skin" />
       <div style="display:flex;flex-direction:column;">
         <h2 style="margin:0 0 6px 0;">${result.name}</h2>
         <div style="display:flex;align-items:center;gap:12px;">
