@@ -15,6 +15,7 @@ const players = [
   { name: "zangi777", tier: "HT5", points: 2 },
   { name: "DreamStanXO", tier: "LT5", points: 1 },
   { name: "Datasha", tier: "LT5", points: 1 },
+  { name: "Omar_kh_2024", tier: "LT5", points: 1 },
 ];
 
 // Load Minecraft Skin from Crafty.gg
