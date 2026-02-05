@@ -2,7 +2,7 @@
 const players = [
   { name: "_BMW", tier: "LT2", points: 20 },
   { name: "MinTech", tier: "HT3", points: 10 },
-  { name: "Marlow_Geo", tier: "LT3", points: 6 },
+  { name: "Marlow_Geo", tier: "HT3", points: 10 },
   { name: "Pretty", tier: "LT3", points: 6 },
   { name: "ht1", tier: "HT4", points: 4 },
   { name: "Qartveli", tier: "HT4", points: 4 },
